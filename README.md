@@ -3,7 +3,6 @@
 > Enterprise-scale AI pipeline for Suraksha Life Insurance serving **4.8M policyholders** across **9 languages** with **3 communication channels**, powered by **Google Gemini 2.0 Flash** and **LangSmith**.
 
 ![Status](https://img.shields.io/badge/Status-Production%20Ready-green?style=flat-square)
-![Tests](https://img.shields.io/badge/Tests-12/13%20Passing-brightgreen?style=flat-square)
 ![Compliance](https://img.shields.io/badge/Compliance-TRAI%20%2B%20IRDAI-blue?style=flat-square)
 
 ---

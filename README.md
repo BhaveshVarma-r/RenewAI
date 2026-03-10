@@ -251,11 +251,6 @@ renewai/
 │   │   └── api/                    # Backend client
 │   └── package.json
 │
-├── tests/                           # Unit + integration tests
-│   ├── test_agents.py              # Agent logic
-│   ├── test_safety_gate.py         # Safety pipeline
-│   ├── test_critique_loop.py       # Retry logic
-│   └── test_mock_services.py       # Service behavior
 │
 ├── docker-compose.yml              # Production orchestration
 ├── Dockerfile                      # Backend container
@@ -636,6 +631,3 @@ npm run dev
 
 All other services are mocked — no additional API keys needed.
 
-## License
-
-MIT

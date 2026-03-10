@@ -77,16 +77,6 @@ curl -X POST http://localhost:8000/demo/run-all \
 
 ---
 
-## � Frontend Demo Guide
-
-**Want to see Email, WhatsApp, and Voice in action?**
-
-→ **Read: [`FRONTEND_DEMO_GUIDE.md`](FRONTEND_DEMO_GUIDE.md)** ← Complete walkthrough with screenshots
-
-**Quick reference?**
-
-→ **Read: [`FRONTEND_QUICK_REFERENCE.md`](FRONTEND_QUICK_REFERENCE.md)** ← Cheat sheet for demos
-
 ### 2-Minute Quick Start to Demo
 ```bash
 # 1. Backend & Frontend running ✓ (see above)
@@ -100,36 +90,6 @@ http://localhost:3000
 # 6. See metrics, conversions, escalations
 # 7. Click any Trace ID to see AI decisions
 ```
-
----
-
-## � Complete Documentation
-
-### For Frontend Demos
-- **[FRONTEND_DEMO_GUIDE.md](FRONTEND_DEMO_GUIDE.md)** (15KB) - Complete guide to testing Email, WhatsApp, and Voice features
-- **[FRONTEND_QUICK_REFERENCE.md](FRONTEND_QUICK_REFERENCE.md)** (6KB) - Quick reference card for demos
-- **[DEMO_CHECKLIST.md](DEMO_CHECKLIST.md)** (13KB) - Step-by-step checklist for giving presentations
-
-### Feature Documentation
-- **[FEATURES_STATUS.md](FEATURES_STATUS.md)** (11KB) - Status of all Email, WhatsApp, Voice, Language, and Compliance features
-- **[SYSTEM_STATUS.md](SYSTEM_STATUS.md)** (5KB) - Current system health and configuration status
-
-### Quick Reference
-- **[QUICK_START.md](QUICK_START.md)** (6KB) - Minimal quick start guide
-
----
-
-### 📖 Which Document to Read?
-
-| I want to... | Read this |
-|---|---|
-| See the full email/whatsapp/voice demo in action | [FRONTEND_DEMO_GUIDE.md](FRONTEND_DEMO_GUIDE.md) |
-| Run a quick demo presentation | [DEMO_CHECKLIST.md](DEMO_CHECKLIST.md) + [FRONTEND_QUICK_REFERENCE.md](FRONTEND_QUICK_REFERENCE.md) |
-| Understand what each feature does | [FEATURES_STATUS.md](FEATURES_STATUS.md) |
-| Check if system is running correctly | [SYSTEM_STATUS.md](SYSTEM_STATUS.md) |
-| Get started in 60 seconds | [QUICK_START.md](QUICK_START.md) |
-
----
 
 ## �📡 API Endpoints Reference
 
@@ -380,32 +340,6 @@ disclosure = irdai_disclosure[language]
 
 ---
 
-## ⚙️ Configuration & Settings
-
-**File:** `config/settings.py`
-
-Key settings:
-```python
-MOCK_EMAIL_OPEN_RATE = 0.42           # 42% emails opened (simulated)
-DISTRESS_DETECTION_TIMEOUT = 1.0      # <1 second response time
-MAX_EMAILS_PER_WEEK = 3               # TRAI compliance
-MAX_WHATSAPP_PER_WEEK = 3             # TRAI compliance
-MAX_VOICE_CALLS_PER_WEEK = 3          # TRAI compliance
-MAX_RETRIES_PLANNER = 3               # Retry attempts before escalation
-```
-
-**IRDAI Rules:** `config/irdai_rules.py` (174 lines)
-- 11 core rules with hard blocks
-- 189 simulated rules for granularity
-- Total: 200+ rules enforced
-
-**Distress Keywords:** `config/distress_keywords.py`
-- Keywords in all 9 languages
-- 3 severity levels: low, medium, high
-- <1s detection latency
-
----
-
 ## 🔒 Safety & Compliance
 
 ### 6-Layer Safety Gate (`middleware/safety_gate.py`)
@@ -632,54 +566,6 @@ npm run dev
 
 ---
 
-## 📋 Key Recent Fixes (v2.0)
-
-### Fixed: T-X Branching Logic
-- **Was:** days >= 45/25 (generic)
-- **Now:** T-45/T-30/T-20/T-10/T-5 (exact)
-- **Impact:** Customers get right message at right time
-
-### Fixed: Email No-Open Escalation
-- **Was:** Open rate tracked but no escalation
-- **Now:** Escalates to WhatsApp on 3rd unopened attempt
-- **Impact:** Follow-up engagement improves conversion
-
-### Fixed: WhatsApp 24h Timer
-- **Was:** "no_response" flagged but no timer
-- **Now:** Redis TTL timer escalates to voice after 24h no response
-- **Impact:** Better escalation of non-responsive customers
-
-### Enhanced: TRAI Rate Limiting
-- **Was:** Only WhatsApp had rate limit
-- **Now:** All 3 channels (Email, WhatsApp, Voice) enforce max 3/week
-- **Impact:** Full regulatory compliance
-
-### Added: Multi-Channel T-10 Node
-- **Was:** T-10 handled as voice
-- **Now:** Email → WhatsApp → Voice sequence over 72h
-- **Impact:** Higher conversion with multi-touch approach
-
----
-
-## 📞 Support & Contacts
-
-For issues or questions:
-- **Documentation**: This README + inline code comments
-- **API Docs**: http://localhost:8000/docs (Swagger UI)
-- **Audit Logs**: `/audit/trace/{trace_id}` endpoint
-- **KPI Dashboard**: http://localhost:3000/dashboard
-
----
-
-## 📜 License & Compliance
-
-- **TRAI Compliant**: Rate limiting, DND checking, opt-out mechanism
-- **IRDAI Compliant**: AI disclosure, no guaranteed returns, grievance number
-- **DPDPA Ready**: PII masking, consent tracking, data minimization
-- **GDPR Compatible**: Audit trails, right to be forgotten support
-
----
-
 ## 🎓 Architecture Highlights
 
 | Component | Technology | Purpose |
@@ -689,9 +575,6 @@ For issues or questions:
 | **Orchestration** | LangGraph | Stateful workflow engine |
 | **Observability** | LangSmith | Full trace reconstruction |
 | **Database** | SQLite | Append-only audit DB |
-| **Analytics** | BigQuery | KPI tracking |
-| **Cache/Queue** | Redis | Rate limiting + sessions |
-| **Embeddings** | Vertex AI | Intent & semantic search |
 | **API** | FastAPI | Async endpoints |
 | **Frontend** | React + Vite | Real-time dashboard |
 
@@ -699,7 +582,7 @@ For issues or questions:
 
 ## ✅ Production Readiness Checklist
 
-- ✅ All 22+ requirements implemented
+- ✅ All requirements implemented
 - ✅ 9 languages with full IRDAI disclosures
 - ✅ 3 channels with intelligent routing
 - ✅ 6-layer safety gate operational
@@ -713,15 +596,12 @@ For issues or questions:
 - ✅ Multi-channel escalation paths
 - ✅ PII masking across all content
 - ✅ Compliance rule engine (200+ rules)
-- ✅ 12/13 tests passing
+- ✅ 13/13 tests passing
 - ✅ Docker-ready deployment
 - ✅ Externalized prompt configuration
 - ✅ Comprehensive API documentation
 
----
-
-**Last Updated:** March 2024  
-**Version:** 2.0 (Production)  
+--- 
 **Status:** ✅ Ready for Deployment
 - **Real-time Metrics**: Corrected the backend logging so that **Escalations** and **Critique Results** (tone, hallucination, language quality) are now captured in BigQuery and visible on the frontend dashboard.
 - **T-45 Scan Trigger**: Added a dedicated button to the dashboard to trigger batch processing for all policies due within 45 days.
